@@ -1,0 +1,14 @@
+::-moz-selection {
+	background: hsl(0, 0%, 90%) !important;
+}
+::selection {
+	background: hsl(0, 0%, 90%) !important;
+}
+
+canvas {
+	border: 2px solid #333;
+}
+
+@media (max-width: 768px) {
+
+}

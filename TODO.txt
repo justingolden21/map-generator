@@ -1,0 +1,3 @@
+seeds for maps
+error checking/input verification
+updated css
