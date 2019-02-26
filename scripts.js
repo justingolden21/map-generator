@@ -36,11 +36,6 @@ function generate() {
 		smooth(width, height);
 	}
 
-	// setInterval(function() {
-	// 	smooth(width, height);
-	// 	drawGrid(width, height);
-	// }, 1000);
-
 	// draw grid
 	drawGrid(width, height);
 }
