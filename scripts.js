@@ -63,10 +63,10 @@ function surroundingCount(xPos, yPos, width, height) {
 	for(let x = xPos-1; x <= xPos+1; x++) {
 		for(let y = yPos-1; y <= yPos+1; y++) {
 			if(x >= 0 && x < width && y >= 0 && y < height) {
-				if(!(x == xPos && y == yPos) ) {
+				if(!(x == xPos && y == yPos) ) { //don't count current tile
 					count += grid[x][y];
 				}
-			} else {
+			} else { // more walls on sides
 				count++;
 			}
 		}
@@ -75,14 +75,15 @@ function surroundingCount(xPos, yPos, width, height) {
 }
 
 function drawGrid(width, height) {
+	let size = 5;
 	let canvas = document.getElementById('canvas');
 	let ctx = canvas.getContext('2d');
-	canvas.width = width*5;
-	canvas.height = height*5;
+	canvas.width = width*size;
+	canvas.height = height*size;
 	for(let x=0; x<width; x++) {
 		for(let y=0; y<height; y++) {
 			ctx.fillStyle = grid[x][y] == 0 ? '#fff' : '#000';
-			ctx.fillRect(x*5, y*5, 5, 5);
+			ctx.fillRect(x*size, y*size, size, size);
 		}
 	}
 }
