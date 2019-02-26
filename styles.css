@@ -4,7 +4,10 @@
 ::selection {
 	background: hsl(0, 0%, 90%) !important;
 }
-
-@media (max-width: 768px) {
-
+* {
+	text-align: center;
+}
+canvas {
+	padding: 5px;
+	border: 5px solid #000;
 }

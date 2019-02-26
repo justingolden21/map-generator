@@ -29,22 +29,30 @@
 	<br>
 	<h3>Random Map Generator</h3>
 
-	<label for="width">Width:</label>
-	<input autofocus="true" id="width" type="number" class="form-control form-control-lg" value="100">
+	<div class="row">
+		<div class="col-sm-6 col-md-3">
+			<label for="width">Width:</label>
+			<input autofocus="true" id="width" type="number" class="form-control form-control-lg" value="100">
+		</div>
+		<div class="col-sm-6 col-md-3">
+			<label for="height">Height:</label>
+			<input id="height" type="number" class="form-control form-control-lg" value="60">
+		</div>
+		<div class="col-sm-6 col-md-3">
+			<label for="percent">Fill Percent:</label>
+			<input id="percent" type="number" class="form-control form-control-lg" value="45">
+		</div>
+		<div class="col-sm-6 col-md-3">
+			<label for="smoothing">Smoothing:</label>
+			<input id="smoothing" type="number" class="form-control form-control-lg" value="10">
+		</div>
+	</div>
 
-	<label for="height">Height:</label>
-	<input id="height" type="number" class="form-control form-control-lg" value="60">
-
-	<label for="percent">Fill Percent:</label>
-	<input id="percent" type="number" class="form-control form-control-lg" value="45">
-
-	<label for="smoothing">Smoothing:</label>
-	<input id="smoothing" type="number" class="form-control form-control-lg" value="10">
-
-	<button id="generate" class="btn btn-default btn-lg">Generate</button>
 	<br>
+	<button id="generate" class="btn btn-default btn-lg">Generate</button>
+	<br><br>
 	<canvas id="canvas"></canvas>
-	<p>save image with right click -> save as</p>
+	<p>Download image with right click -> "Save image as..."</p>
 </div>
 
 </body>

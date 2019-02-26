@@ -1,2 +1,5 @@
 error checking/input verification
+url params for inputs?
+size and color input options?
+figure something out for seed?
 updated css
