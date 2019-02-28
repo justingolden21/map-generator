@@ -1,4 +1,5 @@
 $(function() {
+	// listeners
 	$('#generate').click(generate);
 	$('input').change(generate);
 	$('#tunnelCheckbox').change(function() {
@@ -12,8 +13,9 @@ $(function() {
 		generate();
 	});
 
+	// initialize
 	$('.tunnel').css('display','none');
-
+	$('#width').select();
 	generate();
 });
 
@@ -23,6 +25,7 @@ document.onkeyup = function(evt) {
 	} 
 };
 
+// globals
 let grid = [], width, height;
 
 function generate() {
@@ -42,11 +45,9 @@ function generate() {
 			{min:minTunnelWidth, max:maxTunnelWidth});
 	} else {
 		createCellularMap(percent, smoothing);
-
 	}
 
 	drawGrid(width, height);
-
 }
 
 function drawGrid(width, height) {

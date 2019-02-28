@@ -17,7 +17,6 @@ function createCellularMap(percent, smoothing) {
 }
 
 
-
 function randBool(oddsOne) {
 	return Math.random() >= oddsOne/100 ? 0 : 1;
 }
@@ -52,9 +51,6 @@ function surroundingCount(xPos, yPos) {
 
 
 
-
-
-
 /*
 
 // recursive function repalces color at point and adjacent pixels
@@ -79,11 +75,6 @@ function floodFill(x, y, newC) {
 	let prevC = grid[x][y];
 	floodFillUtil(x, y, prevC, newC); 
 } 
-
-
-
-
-
 
 
 function doFloodFill(width, height) {

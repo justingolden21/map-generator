@@ -12,7 +12,6 @@ function createTunnelMap(numTunnels, tunnelDist, tunnelWidth) {
 		startPoint = makeTunnel(startPoint, randInt(0,3), randInt(tunnelDist.min, tunnelDist.max), 
 			randInt(tunnelWidth.min, tunnelWidth.max) );
 	}
-
 }
 
 // returns end point
@@ -46,21 +45,15 @@ function makeTunnel(startPoint, direction, tunnelDist, tunnelWidth) {
 			y = Math.max(y, 0);
 		}
 
-		switch(direction) { // move in that direction
-			case 0:
-				y--;
-				break;
-			case 1:
-				x++;
-				break;
-			case 2:
-				y++;
-				break;
-			case 3:
-				x--;
-				break;
-		}
-
+		// move in given direction
+		if(direction==0)
+			y--;
+		else if(direction==1)
+			x++;
+		else if(direction==2)
+			y++;
+		else
+			x--;
 	}
 
 	return {x:x, y:y};
