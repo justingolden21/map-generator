@@ -39,20 +39,15 @@ function generate() {
 
 	if($('#tunnelCheckbox').is(':checked') ) {
 		createTunnelMap(numTunnels, {min:minTunnelDist, max:maxTunnelDist}, 
-			{min:minTunnelWidth, max:maxTunnelWidth}, width, height);
+			{min:minTunnelWidth, max:maxTunnelWidth});
 	} else {
-
 		createCellularMap(percent, smoothing);
 
 	}
 
-	// draw grid
 	drawGrid(width, height);
 
 }
-
-
-
 
 function drawGrid(width, height) {
 	let size = 5;
@@ -63,8 +58,11 @@ function drawGrid(width, height) {
 	for(let x=0; x<width; x++) {
 		for(let y=0; y<height; y++) {
 			ctx.fillStyle = grid[x][y] == 0 ? '#fff' : '#000';
-			// ctx.fillStyle = grid[x][y] == 0 ? '#fff' : grid[x][y] == 1 ? '#000' : '#00f';
 			ctx.fillRect(x*size, y*size, size, size);
 		}
 	}
+}
+
+function randInt(min, max) {
+	return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
