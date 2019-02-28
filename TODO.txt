@@ -3,3 +3,6 @@ url params for inputs?
 size and color input options?
 figure something out for seed?
 updated css
+
+
+make width, height global...
