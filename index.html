@@ -21,6 +21,7 @@
 
 <link rel="stylesheet" href="styles.css">
 <script src="scripts.js"></script>
+<script src="tunnel.js"></script>
 
 </head>
 
@@ -40,16 +41,42 @@
 			<label for="height">Height:</label>
 			<input id="height" type="number" class="form-control form-control-lg" value="60">
 		</div>
-		<div class="col-sm-6 col-md-3">
+
+		<div class="cellular col-sm-6 col-md-3">
 			<label for="percent">Fill Percent:</label>
 			<input id="percent" type="number" class="form-control form-control-lg" value="45">
 		</div>
-		<div class="col-sm-6 col-md-3">
+		<div class="cellular col-sm-6 col-md-3">
 			<label for="smoothing">Smoothing:</label>
 			<input id="smoothing" type="number" class="form-control form-control-lg" value="10">
 		</div>
+
+		<div class="tunnel col-sm-12 col-md-6">
+			<label for="numTunnels">Tunnels:</label>
+			<input id="numTunnels" type="number" class="form-control form-control-lg" value="40">
+		</div>
+		<div class="tunnel col-sm-6 col-md-6">
+			<label>Tunnel Distance:</label>
+			<br>
+			<label for="minTunnelDist">Min:</label>
+			<input id="minTunnelDist" type="number" class="form-control form-control-lg" value="10">
+			<br>
+			<label for="maxTunnelDist">Max:</label>
+			<input id="maxTunnelDist" type="number" class="form-control form-control-lg" value="15">
+		</div>
+		<div class="tunnel col-sm-6 col-md-6">
+			<label>Tunnel Width:</label>
+			<br>
+			<label for="minTunnelWidth">Min:</label>
+			<input id="minTunnelWidth" type="number" class="form-control form-control-lg" value="1">
+			<br>
+			<label for="maxTunnelWidth">Max:</label>
+			<input id="maxTunnelWidth" type="number" class="form-control form-control-lg" value="3">
+		</div>
 	</div>
 
+	<br>
+	<input id="tunnelCheckbox" type="checkbox">Tunnel Map
 	<br>
 	<button id="generate" class="btn btn-default btn-lg">Generate</button>
 	<br><br>

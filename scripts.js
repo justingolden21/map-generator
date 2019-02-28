@@ -1,9 +1,19 @@
 $(function() {
 	$('#generate').click(generate);
-	$('#width').change(generate);
-	$('#height').change(generate);
-	$('#percent').change(generate);
-	$('#smoothing').change(generate);
+	$('input').change(generate);
+	$('#tunnelCheckbox').change(function() {
+		if($(this).is(':checked') ) {
+			$('.tunnel').css('display','block');
+			$('.cellular').css('display','none');
+		} else {
+			$('.tunnel').css('display','none');
+			$('.cellular').css('display','block');			
+		}
+		generate();
+	});
+
+	$('.tunnel').css('display','none');
+
 	generate();
 });
 
@@ -21,26 +31,38 @@ function generate() {
 	let percent = parseInt($('#percent').val() );
 	let smoothing = parseInt($('#smoothing').val() );
 
-	console.log(width, height, percent, smoothing);
+	let numTunnels = parseInt($('#numTunnels').val() );
+	let minTunnelDist = parseInt($('#minTunnelDist').val() );
+	let maxTunnelDist = parseInt($('#maxTunnelDist').val() );
+	let minTunnelWidth = parseInt($('#minTunnelWidth').val() );
+	let maxTunnelWidth = parseInt($('#maxTunnelWidth').val() );
 
-	// make random grid
-	for(let x=0; x<width; x++) {
-		grid[x] = [];
-		for(let y=0; y<height; y++) {
-			grid[x][y] = randBool(percent);
+	if($('#tunnelCheckbox').is(':checked') ) {
+		createTunnelMap(numTunnels, {min:minTunnelDist, max:maxTunnelDist}, 
+			{min:minTunnelWidth, max:maxTunnelWidth}, width, height);
+	} else {
+
+		// make random grid
+		for(let x=0; x<width; x++) {
+			grid[x] = [];
+			for(let y=0; y<height; y++) {
+				grid[x][y] = randBool(percent);
+			}
 		}
-	}
 
-	// smooth grid
-	for(let i=0; i<smoothing; i++) {
-		smooth(width, height);
-	}
+		// smooth grid
+		for(let i=0; i<smoothing; i++) {
+			smooth(width, height);
+		}
 
-	// flood fill
-	// doFloodFill(width, height);
+		// flood fill
+		// doFloodFill(width, height);
+
+	}
 
 	// draw grid
 	drawGrid(width, height);
+
 }
 
 function randBool(oddsOne) {
