@@ -1,4 +1,5 @@
 need:
+fix corners on tunnels where (tunnel width > 1)
 error checking/input verification
 
 maybe:
