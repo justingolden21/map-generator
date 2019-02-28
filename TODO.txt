@@ -1,5 +1,5 @@
 need:
-fix corners on tunnels (includes tunnels of width 1)
+fix corners on tunnels
 error checking/input verification
 
 maybe:

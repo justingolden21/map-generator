@@ -22,22 +22,23 @@ function makeTunnel(startPoint, direction, tunnelDist, tunnelWidth) {
 		if(x >= 0 && x < width && y >= 0 && y < height) {
 			grid[x][y] = 0;
 
-			// account for tunnelWidth
-			let offset = 0;
-			for(let j=1; j<=tunnelWidth; j++) {
-				offset += j;
-				offset *= -1;
-				if(direction%2==0) { // north/south
-					if(x+offset >= 0 && x+offset < width) {
-						grid[x+offset][y] = 0;
+			if(tunnelWidth!=1) {
+				// account for tunnelWidth
+				let offset = 0;
+				for(let j=1; j<=tunnelWidth; j++) {
+					offset += j;
+					offset *= -1;
+					if(direction%2==0) { // north/south
+						if(x+offset >= 0 && x+offset < width) {
+							grid[x+offset][y] = 0;
+						}
+					} else { // east/west
+						if(y+offset >= 0 && y+offset < height) {
+							grid[x][y+offset] = 0;
+						}
 					}
-				} else { // east/west
-					if(y+offset >= 0 && y+offset < height) {
-						grid[x][y+offset] = 0;
-					}
-				}
+				}				
 			}
-
 		} else { // if not in bounds then move in bounds
 			x = Math.min(x, width-1);
 			x = Math.max(x, 0);
