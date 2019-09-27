@@ -29,10 +29,15 @@ document.onkeyup = function(evt) {
 let grid = [], width, height;
 
 function generate() {
-	width = parseInt($('#width').val() );
-	height = parseInt($('#height').val() );
-	let percent = parseInt($('#percent').val() );
-	let smoothing = parseInt($('#smoothing').val() );
+	width = Math.max(Math.min(parseInt($('#width').val() ),1000),1);
+	height = Math.max(Math.min(parseInt($('#height').val() ),1000),1);
+	$('#width').val(width);
+	$('#height').val(height);
+
+	let percent = Math.max(Math.min(parseInt($('#percent').val() ),100),0);
+	let smoothing = Math.max(Math.min(parseInt($('#smoothing').val() ),50),0);
+	$('#percent').val(percent);
+	$('#smoothing').val(smoothing);
 
 	let numTunnels = parseInt($('#numTunnels').val() );
 	let minTunnelDist = parseInt($('#minTunnelDist').val() );

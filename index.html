@@ -30,26 +30,26 @@
 <div class="text-center container">
 	<br>
 	<h3>Random Map Generator</h3>
-	<h5>Maps generated using cellular automata</h5>
+	<h5><small>Maps generated using cellular automata</small></h5>
 	<hr>
 
 	<div class="row">
 		<div class="col-sm-6 col-md-3">
 			<label for="width">Width:</label>
-			<input autofocus="true" id="width" type="number" class="form-control form-control-lg" value="100">
+			<input autofocus="true" id="width" type="number" class="form-control form-control-lg" value="100" max="1000" min="1">
 		</div>
 		<div class="col-sm-6 col-md-3">
 			<label for="height">Height:</label>
-			<input id="height" type="number" class="form-control form-control-lg" value="60">
+			<input id="height" type="number" class="form-control form-control-lg" value="60" max="1000" min="1">
 		</div>
 
 		<div class="cellular col-sm-6 col-md-3">
 			<label for="percent">Fill Percent:</label>
-			<input id="percent" type="number" class="form-control form-control-lg" value="45">
+			<input id="percent" type="number" class="form-control form-control-lg" value="45" max="100" min="0">
 		</div>
 		<div class="cellular col-sm-6 col-md-3">
 			<label for="smoothing">Smoothing:</label>
-			<input id="smoothing" type="number" class="form-control form-control-lg" value="10">
+			<input id="smoothing" type="number" class="form-control form-control-lg" value="10" max="50" min="0">
 		</div>
 
 		<div class="tunnel col-sm-12 col-md-6">
@@ -77,13 +77,16 @@
 	</div>
 
 	<br>
-	<input id="tunnelCheckbox" type="checkbox">
-	<label for="tunnelCheckbox">Tunnel Map</label>
+
+	<div class="custom-control custom-checkbox text-left">
+		<input id="tunnelCheckbox" type="checkbox" class="custom-control-input">
+		<label class="custom-control-label" for="tunnelCheckbox">Tunnel Map</label>
+	</div>
 	<br>
-	<button id="generate" class="btn btn-default btn-lg">Generate</button>
+	<button id="generate" class="btn btn-primary btn-lg">Generate</button>
 	<br><br>
 	<canvas id="canvas"></canvas>
-	<p>Download image with right click -> "Save image as..."</p>
+	<p>Download image: Right click <i class="fas fa-arrow-right"></i> "<b>Save image as...</b>"</p>
 </div>
 
 </body>
