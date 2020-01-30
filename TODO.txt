@@ -4,5 +4,7 @@ error checking/input verification
 
 maybe:
 url params for inputs option
-size and color input options
+option to pick map colors? tinycolorpicker?
 add more css
+
+generate multiple at a time?
