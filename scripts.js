@@ -1,7 +1,7 @@
 $(function() {
 	// listeners
 	$('#generate').click(generate);
-	$('input').change(generate);
+	$('input:not(#size)').change(generate);
 	$('#tunnelCheckbox').change(function() {
 		if($(this).is(':checked') ) {
 			$('.tunnel').css('display','block');
@@ -12,6 +12,8 @@ $(function() {
 		}
 		generate();
 	});
+
+	$('#size').change( ()=> drawGrid(width, height) );
 
 	// initialize
 	$('.tunnel').css('display','none');
@@ -26,6 +28,7 @@ document.onkeyup = function(evt) {
 };
 
 // globals
+// grid is x and y coords to draw on canvas
 let grid = [], width, height;
 
 function generate() {
@@ -34,21 +37,21 @@ function generate() {
 	$('#width').val(width);
 	$('#height').val(height);
 
-	let percent = Math.max(Math.min(parseInt($('#percent').val() ),100),0);
-	let smoothing = Math.max(Math.min(parseInt($('#smoothing').val() ),50),0);
-	$('#percent').val(percent);
-	$('#smoothing').val(smoothing);
-
-	let numTunnels = parseInt($('#numTunnels').val() );
-	let minTunnelDist = parseInt($('#minTunnelDist').val() );
-	let maxTunnelDist = parseInt($('#maxTunnelDist').val() );
-	let minTunnelWidth = parseInt($('#minTunnelWidth').val() );
-	let maxTunnelWidth = parseInt($('#maxTunnelWidth').val() );
-
 	if($('#tunnelCheckbox').is(':checked') ) {
+		let numTunnels = parseInt($('#numTunnels').val() );
+		let minTunnelDist = parseInt($('#minTunnelDist').val() );
+		let maxTunnelDist = parseInt($('#maxTunnelDist').val() );
+		let minTunnelWidth = parseInt($('#minTunnelWidth').val() );
+		let maxTunnelWidth = parseInt($('#maxTunnelWidth').val() );
+
 		createTunnelMap(numTunnels, {min:minTunnelDist, max:maxTunnelDist}, 
 			{min:minTunnelWidth, max:maxTunnelWidth});
 	} else {
+		let percent = Math.max(Math.min(parseInt($('#percent').val() ),100),0);
+		let smoothing = Math.max(Math.min(parseInt($('#smoothing').val() ),50),0);
+		$('#percent').val(percent);
+		$('#smoothing').val(smoothing);
+
 		createCellularMap(percent, smoothing);
 	}
 
@@ -56,7 +59,7 @@ function generate() {
 }
 
 function drawGrid(width, height) {
-	let size = 5;
+	let size = $('#size').val() || 5;
 	let canvas = document.getElementById('canvas');
 	let ctx = canvas.getContext('2d');
 	canvas.width = width*size;
@@ -71,4 +74,8 @@ function drawGrid(width, height) {
 
 function randInt(min, max) {
 	return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+function randPick(arr) {
+	return arr[Math.floor(Math.random()*arr.length)];
 }

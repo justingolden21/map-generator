@@ -60,19 +60,19 @@
 			<label>Tunnel Distance:</label>
 			<br>
 			<label for="minTunnelDist">Min:</label>
-			<input id="minTunnelDist" type="number" class="form-control form-control-lg" value="10">
+			<input id="minTunnelDist" type="number" class="form-control form-control-lg" value="5">
 			<br>
 			<label for="maxTunnelDist">Max:</label>
-			<input id="maxTunnelDist" type="number" class="form-control form-control-lg" value="15">
+			<input id="maxTunnelDist" type="number" class="form-control form-control-lg" value="25">
 		</div>
 		<div class="tunnel col-sm-6 col-md-6">
 			<label>Tunnel Width:</label>
 			<br>
 			<label for="minTunnelWidth">Min:</label>
-			<input id="minTunnelWidth" type="number" class="form-control form-control-lg" value="1">
+			<input id="minTunnelWidth" type="number" class="form-control form-control-lg" value="2">
 			<br>
 			<label for="maxTunnelWidth">Max:</label>
-			<input id="maxTunnelWidth" type="number" class="form-control form-control-lg" value="1">
+			<input id="maxTunnelWidth" type="number" class="form-control form-control-lg" value="4">
 		</div>
 	</div>
 
@@ -87,6 +87,10 @@
 	<br><br>
 	<canvas id="canvas"></canvas>
 	<p>Download image: Right click <i class="fas fa-arrow-right"></i> "<b>Save image as...</b>"</p>
+
+	Scale:
+	<input id="size" class="form-control" type="range" min="1" max="10" step="1" value="5">
+
 </div>
 
 </body>

@@ -8,8 +8,13 @@ function createTunnelMap(numTunnels, tunnelDist, tunnelWidth) {
 	}
 
 	let startPoint = {x: randInt(0, width-1), y: randInt(0, height-1) };
+	let prevDirection = randInt(0,3);
 	for(let i=0; i<numTunnels; i++) {
-		startPoint = makeTunnel(startPoint, randInt(0,3), randInt(tunnelDist.min, tunnelDist.max), 
+		// don't go same horizontal/vertical as previous
+		let direction = prevDirection % 2 == 0 ? randPick([1,3]) : randPick([0,2]);
+		prevDirection = direction;
+
+		startPoint = makeTunnel(startPoint, direction, randInt(tunnelDist.min, tunnelDist.max), 
 			randInt(tunnelWidth.min, tunnelWidth.max) );
 	}
 }
