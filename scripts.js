@@ -1,7 +1,7 @@
 $(function() {
 	// listeners
 	$('#generate').click(generate);
-	$('input:not(#size)').change(generate);
+	$('input:not(#size):not(#downloadNum)').change(generate);
 	$('#tunnelCheckbox').change(function() {
 		if($(this).is(':checked') ) {
 			$('.tunnel').css('display','block');
@@ -30,8 +30,10 @@ document.onkeyup = function(evt) {
 // globals
 // grid is x and y coords to draw on canvas
 let grid = [], width, height;
+let mapCount = 0;
 
 function generate() {
+	mapCount++;
 	width = Math.max(Math.min(parseInt($('#width').val() ),1000),1);
 	height = Math.max(Math.min(parseInt($('#height').val() ),1000),1);
 	$('#width').val(width);
@@ -78,4 +80,21 @@ function randInt(min, max) {
 
 function randPick(arr) {
 	return arr[Math.floor(Math.random()*arr.length)];
+}
+
+function downloadImg() {
+	let a = document.createElement('a');
+	a.href = document.getElementById('canvas').toDataURL('image/png');
+	a.download = 'map'+mapCount+'.png';
+	document.body.appendChild(a);
+	a.click();
+	document.body.removeChild(a);
+}
+
+function downloadMany() {
+	let num = $('#downloadNum').val();
+	for(let i=0; i<num; i++) {
+		generate();
+		downloadImg();
+	}
 }

@@ -46,7 +46,7 @@
 
 		<div class="cellular col-sm-6 col-md-3">
 			<label for="percent">Fill Percent:</label>
-			<input id="percent" type="number" class="form-control form-control-lg" value="45" max="100" min="0">
+			<input id="percent" type="number" class="form-control form-control-lg" value="48" max="100" min="0">
 		</div>
 		<div class="cellular col-sm-6 col-md-3">
 			<label for="smoothing">Smoothing:</label>
@@ -87,10 +87,17 @@
 	<button id="generate" class="btn btn-primary btn-lg">Generate</button>
 	<br><br>
 	<canvas id="canvas"></canvas>
-	<p>Download image: Right click <i class="fas fa-arrow-right"></i> "<b>Save image as...</b>"</p>
+	<br>
+	<button onclick="downloadImg()" class="btn btn-dark">Download Image</button>
+<!-- 	<p>Download image: Right click <i class="fas fa-arrow-right"></i> "<b>Save image as...</b>"</p> -->
 
-	Scale:
+	<hr>
+	<p>Scale:</p>
 	<input id="size" class="form-control" type="range" min="1" max="10" step="1" value="5">
+
+	<br>
+	<button onclick="downloadMany()" class="btn btn-dark">Download Many:</button>
+	<input id="downloadNum" class="form-control" type="number" value="10" min="1" max="100">
 
 </div>
 
