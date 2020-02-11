@@ -1,10 +1,12 @@
 need:
 fix corners on tunnels
 error checking/input verification
+add icon
 
 maybe:
 url params for inputs option
 option to pick map colors? tinycolorpicker?
 add more css
 
-generate multiple at a time?
+click to toggle map tile?
+finish implementing url params/share map feature/import and export
