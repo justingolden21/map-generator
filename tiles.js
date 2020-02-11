@@ -5,7 +5,7 @@ const DIRT = 0;
 const WATER = 1;
 
 let IMG = new Image();
-IMG.src = 'tiles.png';
+IMG.src = 'tiles2.png';
 
 function drawTile(ctx, tileX, tileY, canvasX, canvasY, size) {
 
@@ -38,10 +38,10 @@ function getTile(x, y, width, height) {
 			dirt_below = true;
 		}
 		if(x > 0 && grid[x-1][y] == DIRT) {
-			dirt_right = true;
+			dirt_left = true;
 		}
 		if(x < width - 1 && grid[x+1][y] == DIRT) {
-			dirt_left = true;
+			dirt_right = true;
 		}
 
 		// dirt on 3 sides
@@ -60,16 +60,16 @@ function getTile(x, y, width, height) {
 
 		// dirt on 2 sides
 		if(dirt_above && dirt_right) {
-			return [7,1];
+			return [4,1];
 		}
 		if(dirt_right && dirt_below) {
-			return [6,1];
-		}
-		if(dirt_below && dirt_left) {
 			return [5,1];
 		}
+		if(dirt_below && dirt_left) {
+			return [6,1];
+		}
 		if(dirt_left && dirt_above) {
-			return [4,1];
+			return [7,1];
 		}
 
 		// dirt on 1 side
@@ -77,13 +77,13 @@ function getTile(x, y, width, height) {
 			return [0,1];
 		}
 		if(dirt_right) {
-			return [3,1];
+			return [1,1];
 		}
 		if(dirt_below) {
 			return [2,1];
 		}
 		if(dirt_left) {
-			return [1,1];
+			return [3,1];
 		}
 
 		// dirt on corner
@@ -104,6 +104,13 @@ function getTile(x, y, width, height) {
 		}
 		if(x > 0 && y > 0 && grid[x-1][y-1] == DIRT) {
 			dirt_top_left = true;
+		}
+
+		if(dirt_top_right && dirt_bottom_left) {
+			return [6,7];
+		}
+		if(dirt_top_left && dirt_bottom_right) {
+			return [7,7];
 		}
 
 		if(dirt_top_right) {
