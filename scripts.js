@@ -13,17 +13,8 @@ $( ()=> {
 		generate();
 	});
 
-	$('#size').change( ()=> drawGrid(width, height) );
-
-	$('#tileCheckbox').change( ()=> {
-		console.log($('#tileCheckbox').is(':checked') );
-		if($('#tileCheckbox').is(':checked') ) {
-			drawTileGrid(width, height);
-		}
-		else {
-			drawGrid(width, height);
-		}
-	})
+	$('#size').change( ()=> makeGrid(width, height) );
+	$('#tileCheckbox').change( ()=> makeGrid(width, height) );
 
 	// initialize
 	$('.tunnel').css('display','none');
@@ -67,12 +58,16 @@ function generate() {
 		createCellularMap(percent, smoothing);
 	}
 
+	makeGrid(width, height);
+}
+
+function makeGrid(width, height) {
 	if($('#tileCheckbox').is(':checked') ) {
 		drawTileGrid(width, height);
 	}
 	else {
-		drawGrid(width, height);		
-	}
+		drawGrid(width, height);
+	}	
 }
 
 function drawGrid(width, height) {

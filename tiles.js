@@ -169,7 +169,10 @@ function getTile(x, y, width, height) {
 	return [randInt(0,3),0];
 }
 
-function drawTileGrid(width, height, size=32) {
+function drawTileGrid(width, height) {
+
+	let size = ($('#size').val() || 5) / 10 * 32;
+
 	let canvas = document.getElementById('canvas');
 	let ctx = canvas.getContext('2d');
 	canvas.width = width*size;
