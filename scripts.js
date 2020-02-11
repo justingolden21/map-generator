@@ -1,8 +1,8 @@
-$(function() {
+$( ()=> {
 	// listeners
 	$('#generate').click(generate);
-	$('input:not(#size):not(#downloadNum)').change(generate);
-	$('#tunnelCheckbox').change(function() {
+	$('input:not(#size):not(#downloadNum):not(#tileCheckbox)').change(generate);
+	$('#tunnelCheckbox').change( ()=> {
 		if($(this).is(':checked') ) {
 			$('.tunnel').css('display','block');
 			$('.cellular').css('display','none');
@@ -14,6 +14,16 @@ $(function() {
 	});
 
 	$('#size').change( ()=> drawGrid(width, height) );
+
+	$('#tileCheckbox').change( ()=> {
+		console.log($('#tileCheckbox').is(':checked') );
+		if($('#tileCheckbox').is(':checked') ) {
+			drawTileGrid(width, height);
+		}
+		else {
+			drawGrid(width, height);
+		}
+	})
 
 	// initialize
 	$('.tunnel').css('display','none');
@@ -57,7 +67,12 @@ function generate() {
 		createCellularMap(percent, smoothing);
 	}
 
-	drawGrid(width, height);
+	if($('#tileCheckbox').is(':checked') ) {
+		drawTileGrid(width, height);
+	}
+	else {
+		drawGrid(width, height);		
+	}
 }
 
 function drawGrid(width, height) {
