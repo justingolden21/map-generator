@@ -72,22 +72,7 @@ function getTile(x, y, width, height) {
 			return [7,1];
 		}
 
-		// dirt on 1 side
-		if(dirt_above) {
-			return [0,1];
-		}
-		if(dirt_right) {
-			return [1,1];
-		}
-		if(dirt_below) {
-			return [2,1];
-		}
-		if(dirt_left) {
-			return [3,1];
-		}
-
 		// dirt on corner
-
 		let dirt_top_right = false;
 		let dirt_bottom_right = false;
 		let dirt_bottom_left = false;
@@ -106,12 +91,62 @@ function getTile(x, y, width, height) {
 			dirt_top_left = true;
 		}
 
+		// dirt on 1 side
+		if(dirt_above) {
+			// start bug fix 2
+			if(dirt_bottom_right) {
+				return [0,6];
+			}
+			if(dirt_bottom_left) {
+				return [1,6];
+			}
+			// end bug fix 2
+			return [0,1];
+		}
+		if(dirt_right) {
+			// start bug fix 2
+			if(dirt_bottom_left) {
+				return [2,6];
+			}
+			if(dirt_top_left) {
+				return [3,6];
+			}
+			// end bug fix 2
+			return [1,1];
+		}
+		if(dirt_below) {
+			// start bug fix 2
+			if(dirt_top_right) {
+				return [4,6];
+			}
+			if(dirt_top_left) {
+				return [5,6];
+			}
+			// end bug fix 2
+			return [2,1];
+		}
+		if(dirt_left) {
+			// start bug fix 2
+			if(dirt_top_right) {
+				return [6,6];
+			}
+			if(dirt_bottom_right) {
+				return [7,6];
+			}
+			// end bug fix 2
+			return [3,1];
+		}
+
+		// test for dirt on corner
+
+		// start bug fix 1
 		if(dirt_top_right && dirt_bottom_left) {
 			return [6,7];
 		}
 		if(dirt_top_left && dirt_bottom_right) {
 			return [7,7];
 		}
+		// end bug fix 1
 
 		if(dirt_top_right) {
 			return [4,0];
