@@ -30,144 +30,138 @@ function getTile(x, y, width, height) {
 	let dirt_left = false;
 	let dirt_right = false;
 
-	// if(x > 0 && x < width-1 && y > 0 && y < height-1) { // not edge
-		if(y>0 && grid[x][y-1] == DIRT) {
-			dirt_above = true;
-		}
-		if(y < height-1 && grid[x][y+1] == DIRT) {
-			dirt_below = true;
-		}
-		if(x > 0 && grid[x-1][y] == DIRT) {
-			dirt_left = true;
-		}
-		if(x < width - 1 && grid[x+1][y] == DIRT) {
-			dirt_right = true;
-		}
+	if(y>0 && grid[x][y-1] == DIRT) {
+		dirt_above = true;
+	}
+	if(y < height-1 && grid[x][y+1] == DIRT) {
+		dirt_below = true;
+	}
+	if(x > 0 && grid[x-1][y] == DIRT) {
+		dirt_left = true;
+	}
+	if(x < width - 1 && grid[x+1][y] == DIRT) {
+		dirt_right = true;
+	}
 
-		// dirt on 3 sides
-		if(dirt_above && dirt_right && dirt_below) {
-			// return [4,1];
-		}
-		if(dirt_right && dirt_below && dirt_left) {
-			// return [5,1];
-		}
-		if(dirt_below && dirt_left && dirt_above) {
-			// return [6,1];
-		}
-		if(dirt_left && dirt_above && dirt_right) {
-			// return [7,1];
-		}
+	// dirt on 3 sides
+	if(dirt_above && dirt_right && dirt_below) {
+		// return [4,1];
+	}
+	if(dirt_right && dirt_below && dirt_left) {
+		// return [5,1];
+	}
+	if(dirt_below && dirt_left && dirt_above) {
+		// return [6,1];
+	}
+	if(dirt_left && dirt_above && dirt_right) {
+		// return [7,1];
+	}
 
-		// dirt on 2 sides
-		if(dirt_above && dirt_right) {
-			return [4,1];
-		}
-		if(dirt_right && dirt_below) {
-			return [5,1];
-		}
-		if(dirt_below && dirt_left) {
-			return [6,1];
-		}
-		if(dirt_left && dirt_above) {
-			return [7,1];
-		}
+	// dirt on 2 sides
+	if(dirt_above && dirt_right) {
+		return [4,1];
+	}
+	if(dirt_right && dirt_below) {
+		return [5,1];
+	}
+	if(dirt_below && dirt_left) {
+		return [6,1];
+	}
+	if(dirt_left && dirt_above) {
+		return [7,1];
+	}
 
-		// dirt on corner
-		let dirt_top_right = false;
-		let dirt_bottom_right = false;
-		let dirt_bottom_left = false;
-		let dirt_top_left = false;
+	// dirt on corner
+	let dirt_top_right = false;
+	let dirt_bottom_right = false;
+	let dirt_bottom_left = false;
+	let dirt_top_left = false;
 
-		if(x < width-1 && y > 0 && grid[x+1][y-1] == DIRT) {
-			dirt_top_right = true;
-		}
-		if(x < width-1 && y < height-1 && grid[x+1][y+1] == DIRT) {
-			dirt_bottom_right = true;
-		}
-		if(x > 0 && y < height-1 && grid[x-1][y+1] == DIRT) {
-			dirt_bottom_left = true;
-		}
-		if(x > 0 && y > 0 && grid[x-1][y-1] == DIRT) {
-			dirt_top_left = true;
-		}
+	if(x < width-1 && y > 0 && grid[x+1][y-1] == DIRT) {
+		dirt_top_right = true;
+	}
+	if(x < width-1 && y < height-1 && grid[x+1][y+1] == DIRT) {
+		dirt_bottom_right = true;
+	}
+	if(x > 0 && y < height-1 && grid[x-1][y+1] == DIRT) {
+		dirt_bottom_left = true;
+	}
+	if(x > 0 && y > 0 && grid[x-1][y-1] == DIRT) {
+		dirt_top_left = true;
+	}
 
-		// dirt on 1 side
-		if(dirt_above) {
-			// start bug fix 2
-			if(dirt_bottom_right) {
-				return [0,6];
-			}
-			if(dirt_bottom_left) {
-				return [1,6];
-			}
-			// end bug fix 2
-			return [0,1];
-		}
-		if(dirt_right) {
-			// start bug fix 2
-			if(dirt_bottom_left) {
-				return [2,6];
-			}
-			if(dirt_top_left) {
-				return [3,6];
-			}
-			// end bug fix 2
-			return [1,1];
-		}
-		if(dirt_below) {
-			// start bug fix 2
-			if(dirt_top_right) {
-				return [4,6];
-			}
-			if(dirt_top_left) {
-				return [5,6];
-			}
-			// end bug fix 2
-			return [2,1];
-		}
-		if(dirt_left) {
-			// start bug fix 2
-			if(dirt_top_right) {
-				return [6,6];
-			}
-			if(dirt_bottom_right) {
-				return [7,6];
-			}
-			// end bug fix 2
-			return [3,1];
-		}
-
-		// test for dirt on corner
-
-		// start bug fix 1
-		if(dirt_top_right && dirt_bottom_left) {
-			return [6,7];
-		}
-		if(dirt_top_left && dirt_bottom_right) {
-			return [7,7];
-		}
-		// end bug fix 1
-
-		if(dirt_top_right) {
-			return [4,0];
-		}
+	// dirt on 1 side
+	if(dirt_above) {
+		// start bug fix 2
 		if(dirt_bottom_right) {
-			return [5,0];
+			return [0,6];
 		}
 		if(dirt_bottom_left) {
-			return [6,0];
+			return [1,6];
+		}
+		// end bug fix 2
+		return [0,1];
+	}
+	if(dirt_right) {
+		// start bug fix 2
+		if(dirt_bottom_left) {
+			return [2,6];
 		}
 		if(dirt_top_left) {
-			return [7,0];
+			return [3,6];
 		}
+		// end bug fix 2
+		return [1,1];
+	}
+	if(dirt_below) {
+		// start bug fix 2
+		if(dirt_top_right) {
+			return [4,6];
+		}
+		if(dirt_top_left) {
+			return [5,6];
+		}
+		// end bug fix 2
+		return [2,1];
+	}
+	if(dirt_left) {
+		// start bug fix 2
+		if(dirt_top_right) {
+			return [6,6];
+		}
+		if(dirt_bottom_right) {
+			return [7,6];
+		}
+		// end bug fix 2
+		return [3,1];
+	}
 
+	// test for dirt on corner
 
-		// dirt on 0 sides
-		return [randInt(0,3),0];
-	// }
+	// start bug fix 1
+	if(dirt_top_right && dirt_bottom_left) {
+		return [6,7];
+	}
+	if(dirt_top_left && dirt_bottom_right) {
+		return [7,7];
+	}
+	// end bug fix 1
 
-	// todo
-	return [0,0];
+	if(dirt_top_right) {
+		return [4,0];
+	}
+	if(dirt_bottom_right) {
+		return [5,0];
+	}
+	if(dirt_bottom_left) {
+		return [6,0];
+	}
+	if(dirt_top_left) {
+		return [7,0];
+	}
+
+	// dirt on 0 sides
+	return [randInt(0,3),0];
 }
 
 function drawTileGrid(width, height, size=32) {
