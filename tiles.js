@@ -49,7 +49,6 @@ function getTile(x, y, width, height) {
 	// }
 
 	// dirt on 3 sides
-	// start bug fix 3
 	if(dirt_above && dirt_right && dirt_below) {
 		return [0,7];
 	}
@@ -62,7 +61,6 @@ function getTile(x, y, width, height) {
 	if(dirt_left && dirt_above && dirt_right) {
 		return [3,7];
 	}
-	// end bug fix 3
 
 	// dirt on 2 sides
 	if(dirt_above && dirt_right) {
@@ -99,54 +97,65 @@ function getTile(x, y, width, height) {
 
 	// dirt on 1 side
 	if(dirt_above) {
-		// start bug fix 2
+		// dirt on 2 corners
+		if(dirt_bottom_right && dirt_bottom_left) {
+			return [0,9];
+		}
+		// dirt on 1 corner
 		if(dirt_bottom_right) {
 			return [0,6];
 		}
 		if(dirt_bottom_left) {
 			return [1,6];
 		}
-		// end bug fix 2
 		return [0,1];
 	}
 	if(dirt_right) {
-		// start bug fix 2
+		// dirt on 2 corners
+		if(dirt_bottom_left && dirt_top_left) {
+			return [1,9];
+		}
+		// dirt on 1 corner
 		if(dirt_bottom_left) {
 			return [2,6];
 		}
 		if(dirt_top_left) {
 			return [3,6];
 		}
-		// end bug fix 2
 		return [1,1];
 	}
 	if(dirt_below) {
-		// start bug fix 2
+		// dirt on 2 corners
+		if(dirt_top_left && dirt_top_right) {
+			return [2,9];
+		}
+		// dirt on 1 corner
 		if(dirt_top_right) {
 			return [4,6];
 		}
 		if(dirt_top_left) {
 			return [5,6];
 		}
-		// end bug fix 2
 		return [2,1];
 	}
 	if(dirt_left) {
-		// start bug fix 2
+		// dirt on 2 corners
+		if(dirt_top_right && dirt_bottom_right) {
+			return [3,9];
+		}
+		// dirt on 1 corner
 		if(dirt_top_right) {
 			return [6,6];
 		}
 		if(dirt_bottom_right) {
 			return [7,6];
 		}
-		// end bug fix 2
 		return [3,1];
 	}
 
 	// test for dirt on corners
 
 	// dirt on all 4 corners
-	// start bug fix 4
 	if(dirt_top_right && dirt_bottom_right && dirt_bottom_left && dirt_top_left) {
 		return [5,7];
 	}
@@ -178,17 +187,14 @@ function getTile(x, y, width, height) {
 	if(dirt_top_left && dirt_top_right) {
 		return [3,8];
 	}
-	// end bug fix 4
 
 	// dirt on 2 opposite corners
-	// start bug fix 1
 	if(dirt_top_right && dirt_bottom_left) {
 		return [6,7];
 	}
 	if(dirt_top_left && dirt_bottom_right) {
 		return [7,7];
 	}
-	// end bug fix 1
 
 	// dirt on 1 corner
 	if(dirt_top_right) {
