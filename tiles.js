@@ -21,7 +21,7 @@ function drawTile(ctx, tileX, tileY, canvasX, canvasY, size) {
 
 function getTile(x, y, width, height) {
 	if(grid[x][y] == DIRT)
-		return [0,2];
+		return [randInt(0,3),2]; // dirt
 
 	// else water with some dirt
 
@@ -45,7 +45,7 @@ function getTile(x, y, width, height) {
 
 	// dirt on 4 sides
 	if(dirt_above && dirt_right && dirt_below && dirt_above) {
-		return [0,2]; // return dirt
+		return [randInt(0,3),2]; // dirt
 	}
 
 	// dirt on 3 sides
@@ -228,7 +228,7 @@ function getTile(x, y, width, height) {
 	}
 
 	// dirt on 0 sides
-	return [randInt(0,3),0];
+	return [randInt(0,3),0]; // water
 }
 
 function drawTileGrid(width, height) {
