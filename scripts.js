@@ -3,18 +3,17 @@ $( ()=> {
 	$('#generate').click(generate);
 	$('input:not(#size):not(#downloadNum):not(#tileCheckbox)').change(generate);
 	$('#tunnelCheckbox').change( ()=> {
-		if($(this).is(':checked') ) {
+		if($('#tunnelCheckbox').is(':checked') ) {
 			$('.tunnel').css('display','block');
 			$('.cellular').css('display','none');
 		} else {
 			$('.tunnel').css('display','none');
-			$('.cellular').css('display','block');			
+			$('.cellular').css('display','block');
 		}
 		generate();
 	});
 
 	$('#size').change( ()=> makeGrid(width, height) );
-	$('#tileCheckbox').change( ()=> makeGrid(width, height) );
 
 	// initialize
 	$('.tunnel').css('display','none');
