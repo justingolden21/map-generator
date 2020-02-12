@@ -14,6 +14,7 @@ $( ()=> {
 	});
 
 	$('#size').change( ()=> makeGrid(width, height) );
+	$('#tileCheckbox').change( ()=> makeGrid(width, height) );
 
 	// initialize
 	$('.tunnel').css('display','none');
