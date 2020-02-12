@@ -43,10 +43,10 @@ function getTile(x, y, width, height) {
 		dirt_right = true;
 	}
 
-	// // dirt on 4 sides
-	// if(dirt_above && dirt_right && dirt_below && dirt_above) {
-	// 	return [0,2]; // return dirt
-	// }
+	// dirt on 4 sides
+	if(dirt_above && dirt_right && dirt_below && dirt_above) {
+		return [0,2]; // return dirt
+	}
 
 	// dirt on 3 sides
 	if(dirt_above && dirt_right && dirt_below) {
@@ -60,20 +60,6 @@ function getTile(x, y, width, height) {
 	}
 	if(dirt_left && dirt_above && dirt_right) {
 		return [3,7];
-	}
-
-	// dirt on 2 sides
-	if(dirt_above && dirt_right) {
-		return [4,1];
-	}
-	if(dirt_right && dirt_below) {
-		return [5,1];
-	}
-	if(dirt_below && dirt_left) {
-		return [6,1];
-	}
-	if(dirt_left && dirt_above) {
-		return [7,1];
 	}
 
 	// dirt on corner
@@ -94,6 +80,37 @@ function getTile(x, y, width, height) {
 	if(x > 0 && y > 0 && grid[x-1][y-1] == DIRT) {
 		dirt_top_left = true;
 	}
+
+	// dirt on 2 sides
+	if(dirt_above && dirt_right) {
+		// dirt on corner
+		if(dirt_bottom_left) {
+			return [4,9];
+		}
+		return [4,1];
+	}
+	if(dirt_right && dirt_below) {
+		// dirt on corner
+		if(dirt_top_left) {
+			return [5,9];
+		}
+		return [5,1];
+	}
+	if(dirt_below && dirt_left) {
+		// dirt on corner
+		if(dirt_top_right) {
+			return [6,9];
+		}
+		return [6,1];
+	}
+	if(dirt_left && dirt_above) {
+		// dirt on corner
+		if(dirt_bottom_right) {
+			return [7,9];
+		}
+		return [7,1];
+	}
+
 
 	// dirt on 1 side
 	if(dirt_above) {
