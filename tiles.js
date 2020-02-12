@@ -143,8 +143,44 @@ function getTile(x, y, width, height) {
 		return [3,1];
 	}
 
-	// test for dirt on corner
+	// test for dirt on corners
 
+	// dirt on all 4 corners
+	// start bug fix 4
+	if(dirt_top_right && dirt_bottom_right && dirt_bottom_left && dirt_top_left) {
+		return [5,7];
+	}
+
+	// dirt on 3 corners
+	if(dirt_top_right && dirt_bottom_right && dirt_bottom_left) {
+		return [4,8];
+	}
+	if(dirt_bottom_right && dirt_bottom_left && dirt_top_left) {
+		return [5,8];
+	}
+	if(dirt_bottom_left && dirt_top_left && dirt_top_right) {
+		return [6,8];
+	}
+	if(dirt_top_left && dirt_top_right && dirt_bottom_right) {
+		return [7,8];
+	}
+
+	// dirt on 2 adjacent corners
+	if(dirt_top_right && dirt_bottom_right) {
+		return [0,8];
+	}
+	if(dirt_bottom_right && dirt_bottom_left) {
+		return [1,8];
+	}
+	if(dirt_bottom_left && dirt_top_left) {
+		return [2,8];
+	}
+	if(dirt_top_left && dirt_top_right) {
+		return [3,8];
+	}
+	// end bug fix 4
+
+	// dirt on 2 opposite corners
 	// start bug fix 1
 	if(dirt_top_right && dirt_bottom_left) {
 		return [6,7];
@@ -154,6 +190,7 @@ function getTile(x, y, width, height) {
 	}
 	// end bug fix 1
 
+	// dirt on 1 corner
 	if(dirt_top_right) {
 		return [4,0];
 	}
@@ -200,9 +237,13 @@ bug 3:
 importMap("01000060////////////////////////////////+f////////8P////////8P////////8H////////8H///////z+D//+H///h/AP/8D4f/A/gD/8AwP/AD4B/4AAH/AB8B/wAAD/AA+A/wADD/gAfAPwAHn/gAfAHwAP//gM/ADgAf//gf/AAAA///wf/gAAA///wf/gAAA///4f/gAAB///4P/AAABz//4H/AAABh//4H/AAADgH/4H+AAAPgD/4P8AAAfAD/4P8AAAeAD/wH8AAAOAH/wB+AAAOAH/gA+AAAeAH/gA/AAAcAH/gA/AAA4AP/gA/AABwAP/AA+AABwAP+AA+AAB4AH+AB/AAB4AH+AB/gAB8AD+AD/gAB8AB/AD/AAA4AA/wB+AAAAAA/4B+AAAAAB/4D+AAAAAD/4D8AAAAAH/4B4AAAAAH/8AAAAAAAH/+AAAAGAAD//AAAAPAAB//AAAAPgAB//AAAAPwAB/+AAAAPwAD/8AAAAPwAD/4AAAAPwAD/wAAAAHwAD/wAAAAHgAB/wAAYADAAB/gAA8AAAMB+AAA8AAAeA8AAA8BgAfA8AAA8DwAfA+AAB8D4AfA+AAD8B8AOB8AAH8B/4AB8AAH8B/8AB8AAH4A/8AB8AAD4Af8AB8AAB4AP4AB8AAB4AH4AD8AAB4AD4AD+AAD4AD4AD+AAD4AD4AD/AAB4ABwHB/wAA4AAAPg/4AAwAAAfg/4ABwAAA/g/4ABwAAA/x/4AA4AAAf//8AAQAAAP//+AAAAAAH/8/AAAAAAB/4fAAAAAAA/wfAAAAAAA/w+AAAAAAB/x8AAAAAAB/58AAAAAAD/44AAAAAAH/8AAAAAAAH/+AAAAAAAH//AAYAAAAH//AA8AAAAH//AA8AAAAD//AAYAAAAA/+AAAAAAAAf+AAAAcAAAf+AAAA+AAAP+AAAA+AAAD8AAAA+AAAB8AAAAfAAAB8AAAAfgAAB+AADg/wABj/4AHz//gf/")
 drawTileGrid(100,60)
 
+bug 4:
+importMap("01000060/////////////////////5gAP///8//wAAH///4f/gAAH///4P/gAAH///8P/wAAD///+f/wAAB//////4AAA//////8AAAf////z+AAAP////h/AAAD////h/gAAB////z/wAAA//////4A4A//////4B8Af/////4B8AH/////4B4AD/////wBwAB/////wBwAB/////gBwAA////+ABwAAf///8ABwBgf///4AD4Dwf///4AD+Dw////4AB/B5////4AAfAf////4AAOAP////8AAAAH////8AAAAB////+AAAAA/////AAAAAf////gAAAAP////wAAAAP////4AAAAP///z4AAAAP///h4AAAAf///h4AAAA///nB8AAAA///AB8AAAA///AB4AAAA///AAwAAAB+f/AAAAAAD8P/gAAAAAD8H/gAAAAAB+D/gAAAAAA/B/gAAwAAA/AfAAB4AAA/APAAB4AAA+AHAAA8AAAcADAAAYAAAAABgAAAAAAAAAwAAAAAAAAAwAAAAAAAAAwAAAAAAAABwAABgAAAABwAADwAAAwAwAAD4AAB4AwAAD8AAB4A4DAH+AAB4B8HgP+AAB4B8HgP/AAA8B8DAH/gAAeB+AAH/gAAOB/AAH/AAAOB/gAP+AAAEB/gAf8AAAAB/Dg/8AAAAB+Hw/4AAAAB+P4f4AAAAA/P8f4AAAAA/P8fwAAAAA/H4fgAAAAB+HwPgA4AAB8HwHwB8AAB8D4DwB8AHx8B8BgA4AP58AeAAA4AP58APgAAAAHx+AH8AAAADx+AD+AAAAB4+AAfAAAAB8/AAPAAAAB8/AAPgAAAA8/gAPwAAAAY/gAP4AAAAA/gAP8AAAAB/AAf/AAAAD/AAf/wAAAD/gAf/4AAAD/gAf/4AAYB/AAP/wAA8A/AAH/wAA8A/AAH/4AA8A/gAH/8AA+A/gAH/8AB+A/wAD/+DB8A/4AD//nh4B/8AH///h4D//4////z8P")
+drawTileGrid(100,60)
+
 notes:
 do we need sprites for:
-water with 3 or 4 corners with dirt (ex: top right, bottom right, bottom left)
+YES water with 3 or 4 corners with dirt (ex: top right, bottom right, bottom left)
 water with one side and two corners with dirt (ex: below and top right and top left)
 
 */
