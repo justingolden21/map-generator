@@ -82,6 +82,15 @@ function getTile(x, y, width, height) {
 	}
 
 	// dirt on 2 sides
+
+	// opposite sides
+	if(dirt_above && dirt_below) {
+		return [0,10];
+	}
+	if(dirt_right && dirt_left) {
+		return [1,10];
+	}
+
 	if(dirt_above && dirt_right) {
 		// dirt on corner
 		if(dirt_bottom_left) {
