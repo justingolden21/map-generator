@@ -5,7 +5,7 @@ const DIRT = 0;
 const WATER = 1;
 
 let IMG = new Image();
-IMG.src = 'tiles2.png';
+IMG.src = 'tiles4.png';
 
 function drawTile(ctx, tileX, tileY, canvasX, canvasY, size) {
 
@@ -21,7 +21,7 @@ function drawTile(ctx, tileX, tileY, canvasX, canvasY, size) {
 
 function getTile(x, y, width, height) {
 	if(grid[x][y] == DIRT)
-		return [randInt(0,3),2]; // dirt
+		return [0,8]; // dirt
 
 	// else water with some dirt
 
@@ -45,21 +45,21 @@ function getTile(x, y, width, height) {
 
 	// dirt on 4 sides
 	if(dirt_above && dirt_right && dirt_below && dirt_above) {
-		return [4,7];
+		return [0,0];
 	}
 
 	// dirt on 3 sides
 	if(dirt_above && dirt_right && dirt_below) {
-		return [0,7];
+		return [3,0];
 	}
 	if(dirt_right && dirt_below && dirt_left) {
-		return [1,7];
+		return [0,3];
 	}
 	if(dirt_below && dirt_left && dirt_above) {
-		return [2,7];
+		return [1,0];
 	}
 	if(dirt_left && dirt_above && dirt_right) {
-		return [3,7];
+		return [0,1];
 	}
 
 	// dirt on corner
@@ -85,39 +85,39 @@ function getTile(x, y, width, height) {
 
 	// opposite sides
 	if(dirt_above && dirt_below) {
-		return [0,10];
+		return [2,0];
 	}
 	if(dirt_right && dirt_left) {
-		return [1,10];
+		return [0,2];
 	}
 
 	if(dirt_above && dirt_right) {
 		// dirt on corner
 		if(dirt_bottom_left) {
-			return [4,9];
+			return [2,4];
 		}
-		return [4,1];
+		return [3,1];
 	}
 	if(dirt_right && dirt_below) {
 		// dirt on corner
 		if(dirt_top_left) {
-			return [5,9];
+			return [2,6];
 		}
-		return [5,1];
+		return [3,3];
 	}
 	if(dirt_below && dirt_left) {
 		// dirt on corner
 		if(dirt_top_right) {
-			return [6,9];
+			return [0,6];
 		}
-		return [6,1];
+		return [1,3];
 	}
 	if(dirt_left && dirt_above) {
 		// dirt on corner
 		if(dirt_bottom_right) {
-			return [7,9];
+			return [0,4];
 		}
-		return [7,1];
+		return [1,1];
 	}
 
 
@@ -125,119 +125,119 @@ function getTile(x, y, width, height) {
 	if(dirt_above) {
 		// dirt on 2 corners
 		if(dirt_bottom_right && dirt_bottom_left) {
-			return [0,9];
+			return [1,4];
 		}
 		// dirt on 1 corner
 		if(dirt_bottom_right) {
-			return [0,6];
+			return [1,7];
 		}
 		if(dirt_bottom_left) {
-			return [1,6];
+			return [0,7];
 		}
-		return [0,1];
+		return [2,1];
 	}
 	if(dirt_right) {
 		// dirt on 2 corners
 		if(dirt_bottom_left && dirt_top_left) {
-			return [1,9];
+			return [2,5];
 		}
 		// dirt on 1 corner
 		if(dirt_bottom_left) {
-			return [2,6];
+			return [3,7];
 		}
 		if(dirt_top_left) {
-			return [3,6];
+			return [2,7];
 		}
-		return [1,1];
+		return [3,2];
 	}
 	if(dirt_below) {
 		// dirt on 2 corners
 		if(dirt_top_left && dirt_top_right) {
-			return [2,9];
+			return [1,6];
 		}
 		// dirt on 1 corner
-		if(dirt_top_right) {
-			return [4,6];
-		}
 		if(dirt_top_left) {
-			return [5,6];
+			return [5,7];
 		}
-		return [2,1];
+		if(dirt_top_right) {
+			return [4,7];
+		}
+		return [2,3];
 	}
 	if(dirt_left) {
 		// dirt on 2 corners
 		if(dirt_top_right && dirt_bottom_right) {
-			return [3,9];
+			return [0,5];
 		}
 		// dirt on 1 corner
 		if(dirt_top_right) {
-			return [6,6];
+			return [7,7];
 		}
 		if(dirt_bottom_right) {
-			return [7,6];
+			return [6,7];
 		}
-		return [3,1];
+		return [1,2];
 	}
 
 	// test for dirt on corners
 
 	// dirt on all 4 corners
 	if(dirt_top_right && dirt_bottom_right && dirt_bottom_left && dirt_top_left) {
-		return [5,7];
+		return [6,5]; // or 1,5
 	}
 
 	// dirt on 3 corners
 	if(dirt_top_right && dirt_bottom_right && dirt_bottom_left) {
-		return [4,8];
+		return [4,6];
 	}
 	if(dirt_bottom_right && dirt_bottom_left && dirt_top_left) {
-		return [5,8];
+		return [3,6];
 	}
 	if(dirt_bottom_left && dirt_top_left && dirt_top_right) {
-		return [6,8];
+		return [3,5];
 	}
 	if(dirt_top_left && dirt_top_right && dirt_bottom_right) {
-		return [7,8];
+		return [4,5];
 	}
 
 	// dirt on 2 adjacent corners
 	if(dirt_top_right && dirt_bottom_right) {
-		return [0,8];
+		return [5,5];
 	}
 	if(dirt_bottom_right && dirt_bottom_left) {
-		return [1,8];
+		return [6,4];
 	}
 	if(dirt_bottom_left && dirt_top_left) {
-		return [2,8];
+		return [7,5];
 	}
 	if(dirt_top_left && dirt_top_right) {
-		return [3,8];
+		return [6,6];
 	}
 
 	// dirt on 2 opposite corners
 	if(dirt_top_right && dirt_bottom_left) {
-		return [6,7];
+		return [4,4];
 	}
 	if(dirt_top_left && dirt_bottom_right) {
-		return [7,7];
+		return [3,4];
 	}
 
 	// dirt on 1 corner
 	if(dirt_top_right) {
-		return [4,0];
+		return [5,6];
 	}
 	if(dirt_bottom_right) {
-		return [5,0];
+		return [5,4];
 	}
 	if(dirt_bottom_left) {
-		return [6,0];
+		return [7,4];
 	}
 	if(dirt_top_left) {
-		return [7,0];
+		return [7,6];
 	}
 
 	// dirt on 0 sides
-	return [randInt(0,3),0]; // water
+	return [2,2]; // water
 }
 
 function drawTileGrid(width, height) {
