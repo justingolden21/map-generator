@@ -19,7 +19,8 @@ $( ()=> {
 	// initialize
 	$('.tunnel').css('display','none');
 	$('#width').select();
-	generate();
+
+	IMG.onload = generate;
 });
 
 document.onkeyup = function(evt) {
