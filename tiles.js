@@ -5,7 +5,7 @@ const DIRT = 0;
 const WATER = 1;
 
 let IMG = new Image();
-IMG.src = 'tiles4.png';
+IMG.src = 'tiles5.png';
 
 function drawTile(ctx, tileX, tileY, canvasX, canvasY, size) {
 
@@ -183,57 +183,57 @@ function getTile(x, y, width, height) {
 
 	// dirt on all 4 corners
 	if(dirt_top_right && dirt_bottom_right && dirt_bottom_left && dirt_top_left) {
-		return [6,5]; // or 1,5
+		return [6,9]; // or 1,5
 	}
 
 	// dirt on 3 corners
 	if(dirt_top_right && dirt_bottom_right && dirt_bottom_left) {
-		return [4,6];
+		return [0,10];
 	}
 	if(dirt_bottom_right && dirt_bottom_left && dirt_top_left) {
-		return [3,6];
+		return [0,9];
 	}
 	if(dirt_bottom_left && dirt_top_left && dirt_top_right) {
-		return [3,5];
+		return [3,10];
 	}
 	if(dirt_top_left && dirt_top_right && dirt_bottom_right) {
-		return [4,5];
+		return [4,10];
 	}
 
 	// dirt on 2 adjacent corners
 	if(dirt_top_right && dirt_bottom_right) {
-		return [5,5];
+		return [5,9];
 	}
 	if(dirt_bottom_right && dirt_bottom_left) {
-		return [6,4];
+		return [6,8];
 	}
 	if(dirt_bottom_left && dirt_top_left) {
-		return [7,5];
+		return [7,9];
 	}
 	if(dirt_top_left && dirt_top_right) {
-		return [6,6];
+		return [6,10];
 	}
 
 	// dirt on 2 opposite corners
 	if(dirt_top_right && dirt_bottom_left) {
-		return [4,4];
+		return [2,10];
 	}
 	if(dirt_top_left && dirt_bottom_right) {
-		return [3,4];
+		return [1,10];
 	}
 
 	// dirt on 1 corner
 	if(dirt_top_right) {
-		return [5,6];
+		return [5,10];
 	}
 	if(dirt_bottom_right) {
-		return [5,4];
+		return [5,8];
 	}
 	if(dirt_bottom_left) {
-		return [7,4];
+		return [7,8];
 	}
 	if(dirt_top_left) {
-		return [7,6];
+		return [7,10];
 	}
 
 	// dirt on 0 sides
