@@ -5,7 +5,7 @@ const DIRT = 0;
 const WATER = 1;
 
 let IMG = new Image();
-IMG.src = 'tiles5.png';
+IMG.src = 'tiles.png';
 
 function drawTile(ctx, tileX, tileY, canvasX, canvasY, size) {
 
