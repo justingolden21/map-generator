@@ -36,8 +36,8 @@ let mapCount = 0;
 
 function generate() {
 	mapCount++;
-	width = Math.max(Math.min(parseInt($('#width').val() ),1000),1);
-	height = Math.max(Math.min(parseInt($('#height').val() ),1000),1);
+	width = Math.max(Math.min(parseInt($('#width').val() ),800),1);
+	height = Math.max(Math.min(parseInt($('#height').val() ),800),1);
 	$('#width').val(width);
 	$('#height').val(height);
 
