@@ -9,5 +9,6 @@ add more css
 
 finish implementing url params/share map feature/import and export
 
-default zoom 5, inport and export maps, option to show grid, enter on generate btn goes twice
+inport and export maps, option to show grid, enter on generate btn goes twice
 move settings to modal, add fullscreen, github link, contact link, share link, update icon, update readme
+option to change colors if not using tiles

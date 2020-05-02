@@ -80,6 +80,7 @@ function drawGrid(width, height) {
 	for(let x=0; x<width; x++) {
 		for(let y=0; y<height; y++) {
 			ctx.fillStyle = grid[x][y] == 0 ? '#fff' : '#000';
+			// ctx.fillStyle = grid[x][y] == 0 ? '#34991f' : '#2948cc';
 			ctx.fillRect(x*size, y*size, size, size);
 		}
 	}

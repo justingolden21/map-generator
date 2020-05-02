@@ -254,6 +254,16 @@ function drawTileGrid(width, height) {
 			drawTile(ctx, tile[0], tile[1], x, y, size);
 		}
 	}
+	// drawGridLines(ctx, width, height, 'white');
+}
+
+function drawGridLines(ctx, width, height, color) {
+	ctx.strokeStyle = color;
+	for(let x=0; x<width; x++) {
+		for(let y=0; y<height; y++) {
+			ctx.strokeRect(x*TILE_SIZE, y*TILE_SIZE, TILE_SIZE, TILE_SIZE);
+		}
+	}
 }
 
 
