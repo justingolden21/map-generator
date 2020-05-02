@@ -7,3 +7,8 @@ inport and export maps and share maps with generated preview, change grid color 
 move settings to modal, add fullscreen, github link, contact link, share link, update icon, update readme
 option to change colors if not using tiles
 history to go back to previous map?
+
+editable map? click to toggle a tile from grass to water?
+linkable map? share link with friends, get url params?
+add more types of tiles to map, transparent pixel tiles like mountains, houses etc?
+make more types of maps: tunnels and rooms/rogue like, and mazes.
