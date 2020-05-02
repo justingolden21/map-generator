@@ -89,9 +89,9 @@
 	<button onclick="downloadImg()" class="btn btn-dark mt-4">Download Image</button>
 	<p>or right click <i class="fas fa-arrow-right"></i> "<b>Save image as...</b>"</p>
 
-	<details>
-		<summary>More Settings</summary>
+	<button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#settings-collapse" aria-expanded="false" aria-controls="settings-collapse">More Settings</button>
 
+	<div id="settings-collapse" class="collapse">
 		<div class="custom-control custom-checkbox text-left">
 			<input checked id="tileCheckbox" type="checkbox" class="custom-control-input">
 			<label class="custom-control-label" for="tileCheckbox">Use Tiles</label>
@@ -110,7 +110,6 @@
 			<button onclick="downloadMany()" class="btn btn-dark">Download Many:</button>
 			<input id="downloadNum" class="form-control" type="number" value="10" min="1" max="100">
 		</div>
-	</details>
 
 </div>
 
