@@ -9,6 +9,7 @@ add more css
 
 finish implementing url params/share map feature/import and export
 
-inport and export maps, change grid color option
+inport and export maps and share maps with generated preview, change grid color option
 move settings to modal, add fullscreen, github link, contact link, share link, update icon, update readme
 option to change colors if not using tiles
+history to go back to previous map?
