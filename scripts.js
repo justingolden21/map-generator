@@ -45,8 +45,9 @@ let mapCount = 0;
 
 function generate() {
 	mapCount++;
-	width = Math.max(Math.min(parseInt($('#width').val() ),800),1);
-	height = Math.max(Math.min(parseInt($('#height').val() ),800),1);
+	width = check($('#width').val(),1,800,100);
+	height = check($('#height').val(),1,800,60);
+
 	$('#width').val(width);
 	$('#height').val(height);
 
@@ -69,6 +70,11 @@ function generate() {
 	}
 
 	makeGrid(width, height);
+}
+
+function check(num, min, max, defaultVal) {
+	num = Math.max(Math.min(parseInt(num),max),min);
+	return isNaN(num) ? defaultVal : num;
 }
 
 function makeGrid(width, height) {

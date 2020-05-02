@@ -1,6 +1,5 @@
 need:
 fix corners on tunnels
-error checking/input verification
 
 maybe:
 url params for inputs option
