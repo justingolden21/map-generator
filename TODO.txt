@@ -8,3 +8,6 @@ option to pick map colors? tinycolorpicker?
 add more css
 
 finish implementing url params/share map feature/import and export
+
+default zoom 5, inport and export maps, option to show grid, enter on generate btn goes twice
+move settings to modal, add fullscreen, github link, contact link, share link
