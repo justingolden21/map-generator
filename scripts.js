@@ -33,7 +33,7 @@ $( ()=> {
 });
 
 document.onkeyup = function(evt) {
-	if(evt.keyCode==13) { // enter
+	if(evt.keyCode==13 && document.activeElement.id!='generate') { // enter
 		generate();
 	} 
 };
