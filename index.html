@@ -92,28 +92,28 @@
 	<button onclick="downloadImg()" class="btn btn-dark">Download Image</button>
 	<p>or right click <i class="fas fa-arrow-right"></i> "<b>Save image as...</b>"</p>
 
+	<details>
+		<summary>More Settings</summary>
 
-	<div class="custom-control custom-checkbox text-left">
-		<input checked id="tileCheckbox" type="checkbox" class="custom-control-input">
-		<label class="custom-control-label" for="tileCheckbox">Use Tiles</label>
-	</div>
+		<div class="custom-control custom-checkbox text-left">
+			<input checked id="tileCheckbox" type="checkbox" class="custom-control-input">
+			<label class="custom-control-label" for="tileCheckbox">Use Tiles</label>
+		</div>
 
-	<div class="custom-control custom-checkbox text-left">
-		<input id="gridCheckbox" type="checkbox" class="custom-control-input">
-		<label class="custom-control-label" for="gridCheckbox">Show Gridlines</label>
-	</div>
+		<div class="custom-control custom-checkbox text-left">
+			<input id="gridCheckbox" type="checkbox" class="custom-control-input">
+			<label class="custom-control-label" for="gridCheckbox">Show Gridlines</label>
+		</div>
 
-	<hr>
-	<p>Scale:</p>
-	<input id="size" class="custom-range" type="range" min="1" max="10" step="1" value="5">
-	<br>
-	<br>
-	<div class="input-group">
-		<button onclick="downloadMany()" class="btn btn-dark">Download Many:</button>
-		<input id="downloadNum" class="form-control" type="number" value="10" min="1" max="100">
-		
-	</div>
-	<br>
+		<p>Scale:</p>
+		<input id="size" class="custom-range" type="range" min="1" max="10" step="1" value="5">
+		<br>
+		<br>
+		<div class="input-group">
+			<button onclick="downloadMany()" class="btn btn-dark">Download Many:</button>
+			<input id="downloadNum" class="form-control" type="number" value="10" min="1" max="100">
+		</div>
+	</details>
 
 </div>
 
