@@ -44,7 +44,7 @@ function getTile(x, y, width, height) {
 	}
 
 	// dirt on 4 sides
-	if(dirt_above && dirt_right && dirt_below && dirt_above) {
+	if(dirt_above && dirt_right && dirt_below && dirt_left) {
 		return [0,0];
 	}
 
