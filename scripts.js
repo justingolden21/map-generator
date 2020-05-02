@@ -104,10 +104,13 @@ function drawGrid(width, height) {
 }
 
 function drawGridLines(width, height, color) {
+	let size = ($('#size').val() || 5) / 10 * 32; // same as from drawTileGrid
+	let w = width*size;
+	let h = height*size;
 	ctx.strokeStyle = color;
-	for(let x=0; x<width; x++) {
-		for(let y=0; y<height; y++) {
-			ctx.strokeRect(x*TILE_SIZE, y*TILE_SIZE, TILE_SIZE, TILE_SIZE);
+	for(let x=0; x<w; x++) {
+		for(let y=0; y<h; y++) {
+			ctx.strokeRect(x*size, y*size, size, size);
 		}
 	}
 }
