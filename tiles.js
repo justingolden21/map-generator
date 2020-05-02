@@ -7,7 +7,10 @@ const WATER = 1;
 let IMG = new Image();
 IMG.src = 'tileset-clean.png';
 
-function drawTile(tileX, tileY, canvasX, canvasY, size) {
+let IMG2 = new Image();
+IMG2.src = 'tileset-clean-2.png';
+
+function drawTile(tileX, tileY, canvasX, canvasY, size, hasDirt) {
 
 	let sourceX = tileX * TILE_SIZE;
 	let sourceY = tileY * TILE_SIZE;
@@ -15,7 +18,8 @@ function drawTile(tileX, tileY, canvasX, canvasY, size) {
 	canvasX *= size;
 	canvasY *= size;
 
-	ctx.drawImage(IMG, sourceX, sourceY, TILE_SIZE, TILE_SIZE,
+	let img = hasDirt ? IMG2 : IMG;
+	ctx.drawImage(img, sourceX, sourceY, TILE_SIZE, TILE_SIZE,
 		canvasX, canvasY, size, size);
 }
 
@@ -243,7 +247,7 @@ function getTile(x, y, width, height) {
 function drawTileGrid(width, height) {
 
 	let size = ($('#size').val() || 5) / 10 * 32;
-
+	let hasDirt = $('#dirtCheckbox').is(':checked');
 	canvas = document.getElementById('canvas');
 	ctx = canvas.getContext('2d');
 	canvas.width = width*size;
@@ -251,7 +255,7 @@ function drawTileGrid(width, height) {
 	for(let x=0; x<width; x++) {
 		for(let y=0; y<height; y++) {
 			let tile = getTile(x, y, width, height);
-			drawTile(tile[0], tile[1], x, y, size);
+			drawTile(tile[0], tile[1], x, y, size, hasDirt);
 		}
 	}
 }

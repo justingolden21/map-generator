@@ -6,7 +6,7 @@ $( ()=> {
 
 	// listeners
 	$('#generate').click(generate);
-	$('input:not(#size):not(#downloadNum):not(#tileCheckbox):not(#gridCheckbox)').change(generate);
+	$('input:not(#size):not(#downloadNum):not(input[type=checkbox])').change(generate);
 	$('#tunnelCheckbox').change( ()=> {
 		if($('#tunnelCheckbox').is(':checked') ) {
 			$('.tunnel').css('display','block');
@@ -24,12 +24,13 @@ $( ()=> {
 		$('#gridCheckbox').attr('disabled', ! $('#tileCheckbox').is(':checked') );
 	});
 	$('#gridCheckbox').change( ()=> makeGrid(width, height) );
+	$('#dirtCheckbox').change( ()=> makeGrid(width, height) );
 
 	// initialize
 	$('.tunnel').css('display','none');
 	$('#width').select();
 
-	IMG.onload = generate;
+	IMG2.onload = generate;
 });
 
 document.onkeyup = function(evt) {
