@@ -13,3 +13,4 @@ inport and export maps and share maps with generated preview, change grid color 
 move settings to modal, add fullscreen, github link, contact link, share link, update icon, update readme
 option to change colors if not using tiles
 history to go back to previous map?
+add icons to btns
