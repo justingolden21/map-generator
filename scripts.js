@@ -1,7 +1,12 @@
+let canvas, ctx;
+
 $( ()=> {
+	canvas = document.getElementById('canvas');
+	ctx = canvas.getContext('2d');
+
 	// listeners
 	$('#generate').click(generate);
-	$('input:not(#size):not(#downloadNum):not(#tileCheckbox)').change(generate);
+	$('input:not(#size):not(#downloadNum):not(#tileCheckbox):not(#gridCheckbox)').change(generate);
 	$('#tunnelCheckbox').change( ()=> {
 		if($('#tunnelCheckbox').is(':checked') ) {
 			$('.tunnel').css('display','block');
@@ -14,7 +19,11 @@ $( ()=> {
 	});
 
 	$('#size').change( ()=> makeGrid(width, height) );
-	$('#tileCheckbox').change( ()=> makeGrid(width, height) );
+	$('#tileCheckbox').change( ()=> {
+		makeGrid(width, height);
+		$('#gridCheckbox').attr('disabled', ! $('#tileCheckbox').is(':checked') );
+	});
+	$('#gridCheckbox').change( ()=> makeGrid(width, height) );
 
 	// initialize
 	$('.tunnel').css('display','none');
@@ -65,16 +74,18 @@ function generate() {
 function makeGrid(width, height) {
 	if($('#tileCheckbox').is(':checked') ) {
 		drawTileGrid(width, height);
+		// only grid lines for tiles
+		if($('#gridCheckbox').is(':checked') ) {
+			drawGridLines(width, height, 'white');
+		}
 	}
 	else {
 		drawGrid(width, height);
-	}	
+	}
 }
 
 function drawGrid(width, height) {
 	let size = $('#size').val() || 5;
-	let canvas = document.getElementById('canvas');
-	let ctx = canvas.getContext('2d');
 	canvas.width = width*size;
 	canvas.height = height*size;
 	for(let x=0; x<width; x++) {
@@ -82,6 +93,15 @@ function drawGrid(width, height) {
 			ctx.fillStyle = grid[x][y] == 0 ? '#fff' : '#000';
 			// ctx.fillStyle = grid[x][y] == 0 ? '#34991f' : '#2948cc';
 			ctx.fillRect(x*size, y*size, size, size);
+		}
+	}
+}
+
+function drawGridLines(width, height, color) {
+	ctx.strokeStyle = color;
+	for(let x=0; x<width; x++) {
+		for(let y=0; y<height; y++) {
+			ctx.strokeRect(x*TILE_SIZE, y*TILE_SIZE, TILE_SIZE, TILE_SIZE);
 		}
 	}
 }

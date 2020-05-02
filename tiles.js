@@ -7,7 +7,7 @@ const WATER = 1;
 let IMG = new Image();
 IMG.src = 'tileset-clean.png';
 
-function drawTile(ctx, tileX, tileY, canvasX, canvasY, size) {
+function drawTile(tileX, tileY, canvasX, canvasY, size) {
 
 	let sourceX = tileX * TILE_SIZE;
 	let sourceY = tileY * TILE_SIZE;
@@ -244,29 +244,17 @@ function drawTileGrid(width, height) {
 
 	let size = ($('#size').val() || 5) / 10 * 32;
 
-	let canvas = document.getElementById('canvas');
-	let ctx = canvas.getContext('2d');
+	canvas = document.getElementById('canvas');
+	ctx = canvas.getContext('2d');
 	canvas.width = width*size;
 	canvas.height = height*size;
 	for(let x=0; x<width; x++) {
 		for(let y=0; y<height; y++) {
 			let tile = getTile(x, y, width, height);
-			drawTile(ctx, tile[0], tile[1], x, y, size);
-		}
-	}
-	// drawGridLines(ctx, width, height, 'white');
-}
-
-function drawGridLines(ctx, width, height, color) {
-	ctx.strokeStyle = color;
-	for(let x=0; x<width; x++) {
-		for(let y=0; y<height; y++) {
-			ctx.strokeRect(x*TILE_SIZE, y*TILE_SIZE, TILE_SIZE, TILE_SIZE);
+			drawTile(tile[0], tile[1], x, y, size);
 		}
 	}
 }
-
-
 
 /*
 test condition maps:
