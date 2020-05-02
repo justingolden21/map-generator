@@ -1,5 +1,9 @@
-# Random Map Generator
+# Random Map Generator <img src="img/icon/icon.png" width="64px">
 
-https://justingolden21.github.io/map-generator/
+https://justingolden.me/map-generator
 
-using tiles from https://opengameart.org/content/top-down-grass-beach-and-water-tileset
+https://justingolden.me
+
+https://github.com/justingolden21/
+
+contact@justingolden.me
